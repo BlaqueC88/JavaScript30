@@ -42,7 +42,27 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll("div");
+  const button = document.querySelector("button");
 
+  function logText(e) {
+    console.log(this.classList.value);
+    //e.stopPropagation(); // Stop bubbling!
+    // console.log(this);
+  }
+
+  divs.forEach(div => div.addEventListener("click", logText, 
+  {
+    capture: false,
+    once: true // Allows it to be ran only once then removes it
+  }));
+
+  // Bottom code is good for online payment buttons
+  button.addEventListener("click", () => {
+    console.log("click!!!");
+  }, {
+    once: true
+  })
 </script>
 </body>
 </html>
